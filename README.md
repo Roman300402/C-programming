@@ -1,41 +1,41 @@
 # C-Programming: Mathematical & Algorithmic Problems 🧮
 
-Este repositorio contiene una colección de soluciones programadas en **C**, enfocadas en la resolución de problemas de optimización, estructuras de datos dinámicas y cálculo simbólico. 
+This repository contains a collection of solutions programmed in **C**, focusing on mathematical optimization, dynamic data structures, and symbolic computation.
 
-Todos los proyectos fueron desarrollados originalmente para la asignatura de **Programación II** en la **Escuela Superior de Física y Matemáticas (ESFM)** del **IPN**.
-
----
-
-## 🚀 Proyectos Destacados
-
-### 1. El Problema de la Mochila (Knapsack Problem) 🎒
-Implementación del problema de optimización combinatoria 0-1.
-* **Método**: Programación Dinámica para maximizar el beneficio bajo restricciones de capacidad.
-* **Complejidad**: Pseudo-polinomial $O(nc)$, optimizando tiempo y espacio.
-* **Aplicaciones**: Incluye documentación sobre su uso en logística y criptografía (Sistema Merkle-Hellman).
-
-### 2. Algoritmos de Búsqueda y Ordenamiento 🔍
-Un sistema integral para la manipulación de arreglos con visualización en tiempo real.
-* **Ordenamiento**: Implementación de Quicksort, Mergesort, Heapsort, Shellsort y métodos directos.
-* **Búsqueda**: Algoritmos de búsqueda lineal, binaria y mediante tablas de Hash.
-* **Interfaz**: Renderizado gráfico en consola mediante histogramas para observar el comportamiento de cada algoritmo.
-
-### 3. Derivador Simbólico (Expression Trees) 📐
-Motor de cálculo diferencial que procesa funciones matemáticas y genera su derivada.
-* **Estructura**: Construcción de Árboles de Expresión a partir de notación postfija.
-* **Lógica**: Uso de Pilas dinámicas y recursividad para aplicar reglas de la suma, producto, potencia y cadena.
-* **Funciones**: Soporta variables, constantes y funciones trigonométricas.
+All projects were originally developed for the **Programming II** course at the **Escuela Superior de Física y Matemáticas (ESFM)** of the **IPN**.
 
 ---
 
-## 📂 Estructura de Documentación
-El repositorio incluye archivos complementarios que detallan la base teórica de los proyectos:
-* **Presentaciones**: Historia del problema (Richard Karp, 1972) e imágenes del funcionamiento.
-* **Memorias Técnicas**: Definiciones formales, análisis de complejidad y variantes como la mochila de múltiple elección.
+## 🚀 Featured Projects
 
-## 🛠️ Requisitos e Instalación
-1. **Compilador**: Requiere GCC (MinGW para Windows o GCC estándar en Linux).
-2. **Compilación**: 
+### 1. The Knapsack Problem 🎒
+An implementation of the 0-1 combinatorial optimization problem.
+* **Method**: Dynamic Programming to maximize profit under capacity constraints.
+* **Complexity**: Pseudo-polynomial $O(nc)$, optimizing both time and space.
+* **Applications**: Includes documentation on its use in logistics and cryptography (Merkle-Hellman Knapsack Cryptosystem).
+
+### 2. Search & Sort Algorithms 🔍
+A comprehensive system for array manipulation with real-time visualization.
+* **Sorting**: Implementation of Quicksort, Mergesort, Heapsort, Shellsort, and direct methods.
+* **Searching**: Linear, Binary, and Hash-based search algorithms.
+* **Interface**: Console-based graphical rendering using histograms to observe the behavior of each algorithm in real-time.
+
+### 3. Symbolic Differentiator (Expression Trees) 📐
+A calculus engine that processes mathematical functions and generates their symbolic derivative.
+* **Structure**: Construction of **Binary Expression Trees** from postfix notation.
+* **Logic**: Use of **dynamic Stacks** and recursion to apply differentiation rules (sum, product, power, and chain rule).
+* **Functions**: Supports variables, constants, and trigonometric functions (Sine, Cosine).
+
+---
+
+## 📂 Documentation Structure
+The repository includes complementary files detailing the theoretical basis of the projects:
+* [cite_start]**Presentations**: Problem history (Richard Karp, 1972) and visual step-by-step examples[cite: 5, 57, 324].
+* [cite_start]**Technical Papers**: Formal definitions, complexity analysis, and variants like the Multiple-Choice Knapsack or the Subset Sum Problem[cite: 16, 96, 305].
+
+## 🛠️ Requirements & Installation
+1. **Compiler**: Requires GCC (MinGW for Windows or standard GCC on Linux).
+2. **Compilation**: 
    ```bash
-   gcc nombre_del_archivo.c -o programa
-   ./programa
+   gcc file_name.c -o program
+   ./program
