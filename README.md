@@ -4,7 +4,7 @@ This repository contains a collection of solutions programmed in **C**, focusing
 
 All projects were originally developed for the **Programming II** course at the **Escuela Superior de Física y Matemáticas (ESFM)** of the **IPN**.
 
----
+-
 
 ## 🚀 Featured Projects
 
