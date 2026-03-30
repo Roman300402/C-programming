@@ -1,123 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-#include<stdio.h>
-#include<conio.h>
-#include<stdlib.h>
-#include<math.h>
+// Función para obtener el máximo de dos enteros
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
 
+int main() {
+    int n, W;
+    
+    printf("\t\t***** PROBLEMA DE LA MOCHILA *****\n");
+    printf("Digite el numero de elementos: ");
+    scanf("%d", &n);
+    printf("Capacidad de la mochila: ");
+    scanf("%d", &W);
 
-int mochi(int i,int j);
-int items,i,j,C,condi[20],valor[20],peso[20],t[20][20];//Tenemos una cantidad finita de elementos por lo tanto esta acotado el problema.
-int max(int i,int j);
+    int valor[n + 1], peso[n + 1];
+    int i, w;
 
-
-int main(int argc, char *argv[]){
-	system("color 30");
-	
-    printf("\t\t\t*****PROBLEMA DE LA MOCHILA*****\n");
-	printf("\nDigite el numero de los elementos:");
-	scanf("%d",&items);//COLUMNAS DE LA MATRIZ
-	printf("\nEscriba la capacidad de la mochila:");
-	scanf("%d",&C);//FILAS
-
-
-	for (i=1;i<=items;i++) {//Solicita la informacion de beneficio y peso de cada item
-		system("cls");
-		 printf("\t\t\t\t*****PROBLEMA DE LA MOCHILA*****\n");
-		printf("Elemento numero %d\n",i);
-		printf("Escriba el beneficio:");
-		scanf("%d",&valor[i]);
-		printf("Escriba el peso:");
-		scanf("%d",&peso[i]);
-	}
-	system("cls");
-	 printf("\t\t\t*****PROBLEMA DE LA MOCHILA*****\n");
-	 items=items+1;
-     C=C+1;
-	int benefi,MKP[items][C];
- 
- for(i=0;i<C;i++){
- 	MKP[0][i]=0;
- 	if(i<items){
- 		MKP[i][0]=0;
-	 }
- }		
- for(i=1;i<=items-1;++i){
-    for(j=1;j<=C-1;++j){
-    	if(j-peso[i]<0){
-    			MKP[i][j]=MKP[i-1][j];
-		}
-		else{	
-        MKP[i][j]= max(MKP[i-1][j], MKP[i-1][j-peso[i]] + valor[i]);
-    	}
+    for (i = 1; i <= n; i++) {
+        printf("\nElemento %d\n Beneficio: ", i);
+        scanf("%d", &valor[i]);
+        printf(" Peso: ");
+        scanf("%d", &peso[i]);
     }
- }
- 
- //imprime matriz
- 
- printf("Matriz solucion con n=Numero de Elementos+1 y m = Capacidad de la mochila +1");
-printf("\n");
- int may=-1,V=0;
- for( i=0;i<items;++i){
-    for(j=0;j<C;++j){
-    	printf("%2d",MKP[i][j]);printf("  ");
-    	if(MKP[i][j]>may){
-    		may=MKP[i][j];
-    		V=MKP[i][j];
-		}
-    	
+
+    // Matriz DP: filas (objetos), columnas (capacidad 0 a W)
+    int K[n + 1][W + 1];
+
+    // Construcción de la tabla
+    for (i = 0; i <= n; i++) {
+        for (w = 0; w <= W; w++) {
+            if (i == 0 || w == 0)
+                K[i][w] = 0;
+            else if (peso[i] <= w)
+                K[i][w] = max(valor[i] + K[i - 1][w - peso[i]], K[i - 1][w]);
+            else
+                K[i][w] = K[i - 1][w];
+        }
     }
-    printf("\n");
+
+    printf("\nBeneficio total maximo: %d\n", K[n][W]);
+
+    // Backtracking para encontrar qué elementos se incluyeron
+    printf("Elementos incluidos (Peso, Beneficio):\n");
+    int res = K[n][W];
+    w = W;
+    for (i = n; i > 0 && res > 0; i--) {
+        // Si el resultado viene de la fila anterior, el item no se incluyó
+        if (res == K[i - 1][w])
+            continue;
+        else {
+            printf("- Item %d: (%d, %d)\n", i, peso[i], valor[i]);
+            res -= valor[i];
+            w -= peso[i];
+        }
+    }
+
+    return 0;
 }
-
-items=items-1;
-C=C-1;
-	for (i=0;i<=items;i++)
-	
-	  for (j=0;j<=C;j++)
-	   if((i==0)||(j==0))
-	    t[i][j]=0; else
-	    t[i][j]=-1;
-	benefi=mochi(items,C);
-	i=items;
-	j=C;
-	while(j!=0&&i!=0) {
-		if(t[i][j]!=t[i-1][j]) {
-			condi[i]=1;
-			j=j-peso[i];
-			i--;
-		} else
-		   i--;
-	}
-	printf("\nLos elementos que maximizan el beneficio en la mochila son:\n");
-	printf("\t\tPeso(W)\tBeneficio\n");
-	for (i=1;i<=items;i++){
-	
-	  if(condi[i]){ //Este codicional nos permite mostrar solo los items que estaran dentro de la mochila
-	   printf("\t\t%d\t%d\n",peso[i],valor[i]);
-	   }
-}
-	   
-	   
-	printf("El beneficio total = %d\n",benefi);
-return 0;
-}
-
-
-int max(int i,int j) {
-	return ((i>j)?i:j);
-}
-
-int mochi(int i,int j) {
-	int eval;
-	if(t[i][j]<0) {
-		if(j<peso[i])
-		   eval=mochi(i-1,j); else
-		   eval=max(mochi(i-1,j),valor[i]+mochi(i-1,j-peso[i]));
-		t[i][j]=eval;
-	}
-	return(t[i][j]);
-}
-
-
-
-
