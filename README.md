@@ -30,8 +30,8 @@ A calculus engine that processes mathematical functions and generates their symb
 
 ## 📂 Documentation Structure
 The repository includes complementary files detailing the theoretical basis of the projects:
-* [cite_start]**Presentations**: Problem history (Richard Karp, 1972) and visual step-by-step examples[cite: 5, 57, 324].
-* [cite_start]**Technical Papers**: Formal definitions, complexity analysis, and variants like the Multiple-Choice Knapsack or the Subset Sum Problem[cite: 16, 96, 305].
+* **Presentations**: Problem history (Richard Karp, 1972) and visual step-by-step examples[cite: 5, 57, 324].
+* **Technical Papers**: Formal definitions, complexity analysis, and variants like the Multiple-Choice Knapsack or the Subset Sum Problem.
 
 ## 🛠️ Requirements & Installation
 1. **Compiler**: Requires GCC (MinGW for Windows or standard GCC on Linux).
